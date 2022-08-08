@@ -3,19 +3,29 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
-import postRoutes from "./routes/posts.js";
-
+import managerRoutes from "./routes/managers.js";
+import projectRoutes from "./routes/projects.js";
+import taskRoutes from "./routes/tasks.js";
+import adminRoutes from "./routes/adminAccount.js";
 const app = express();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-app.use("/posts", postRoutes);
+app.use("/managers", managerRoutes);
+app.use("/projects", projectRoutes);
+app.use("/tasks", taskRoutes);
+app.use("/admin", adminRoutes);
+
 
 // https://www.mongodb.com/cloud/atlas
+
+
+
+
 const CONNECTION_URL =
-  "mongodb+srv://Meriem_Nairi:meriemn7798@cluster0.t3r7y.mongodb.net/cluster0?retryWrites=true&w=majority";
+  "mongodb+srv://WeManage:PFE2022@cluster0.zbpn9.mongodb.net/?retryWrites=true&w=majority";
 
 const PORT = process.env.PORT || 5000;
 mongoose
